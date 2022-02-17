@@ -50,54 +50,56 @@ Several sub-objects are listed below that make up this car's interior.
 
 Main Object: Car Interior
 Sub Object 1: Steering Wheel
-    Name 4 things you'll find on the:    Steering Wheel
+
+ Name 4 things you'll find on the:    Steering Wheel
         1) paddle shifters
         2) 'cruise control' controls
-        3) 
-        4) 
+        3) horn pad
+        4) airbag
     Name 2 things you can do with the:   Steering Wheel
         1) adjust cruise control settings.
-        2)
-        
+        2) unswer phone call
+        3) honk the horn
+
 Sub Object 2: Instrument Cluster
     Name 4 things you'll find on the:   Instrument Cluster
-        1)
-        2)
-        3)
-        4)
+        1) speedometer
+        2) fuel gauge
+        3) turn signal indicators
+        4) tachometer
     Name 3 things you can do with the:   Instrument Cluster
-        1)
-        2)
-        3)
+        1) visualise the car's travelling speed 
+        2) visualise the engine's rpm
+        3) visualize the amount of fuel within the car's tank
     
 Sub Object 3: Environment Controls
     Name 3 things you'll find on the:    Environment Controls
-        1)
-        2)
-        3)
+        1) air conditioner 
+        2) temperature
+        3) air circulation       
     Name 3 things you can do with the:   Environment Controls
-        1)
-        2)
-        3)
+        1) switch on the air conditioner 
+        2) set the internal temperature
+        3) choose air circulation modes
 
 Sub Object 4: Infotainment System
     Name 3 things you'll find on the:    Infotainment System
-        1)
-        2)
-        3)
+        1) radio
+        2) bluetooth
+        3) navigator 
     Name 3 things you can do with the:   Infotainment System
-        1)
-        2)
-        3)
+        1) selct a radio to listen to
+        2) set up a bluetooth device
+        3) acess the navigation system
 
 Sub Object 5: Seat 
     Name 3 things you'll find on the:    Seat
-        1)
-        2)
-        3)
+        1) reclainer 
+        2) legs spacer
+        3) warmer 
     Name 2 things you can do with the:   Seat
-        1)
-        2)
+        1) adujus the reclainer's angle
+        2) set the seat's tempurature
 */
 
 /*
@@ -139,7 +141,6 @@ Thing: Car Wash
     In addition to the usual primitives (covered in Project 2), you 
     can use 'std::string' to represent strings in this project.
  */
-
 /*
 Part 1b Assignment:
 1)  Fill in the 4 UDTs below with a random UDT in plain english.
@@ -153,59 +154,53 @@ Part 1b Assignment:
 */
 
 /*
-Thing 1)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+Thing 1:  Midi Controller
+    5 properties:
+        - number of encorders
+        - number of MIDI modes 
+        - number of presets
+        - MIDI message type
+        - MIDI connection type
+    3 things it can do:
+        - send out Control Changes
+        - change between MIDI modes
+        - save user custom presets
 
-/*
-Thing 2)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+Thing 2:  Effects Pedal
+    5 properties:
+        - number of effects modules
+        - number of modes for signal processing
+        - number of controls
+        - number of inputs
+        - number of outputs
+    3 things it can do:
+        - load different effects type per module
+        - process signal in-series or parallel 
+        - custom assigning effect parameters to UI   
 
-/*
-Thing 3)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+Thing 3:  AI Synth
+    5 properties:
+        - number of machine learning models
+        - ammount of neural nodes
+        - number of synthesis parameters
+        - number of inputs
+        - number of outputs
+    3 things it can do:
+        - train models via user-inputs
+        - store machine learning models data
+        - map model-data to the synthesiser parameters 
 
-/*
-Thing 4)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
+Thing 4:  Virtual Mic-pre 
+    5 properties:
+        - number of pre-amp models
+        - number of circuit type
+        - number of microprones 
+        - ammount of storable presets
+        - number of color schemes
+    3 things it can do:
+        - analog-vitrual emulation of mic pre-amps
+        - choose between circuit and mic types
+        - save user presets       
  */
 
  /*
@@ -275,17 +270,17 @@ Part 1c assignment:
 */
 
 /*
-Thing 10)
+Thing 10) ModDelay
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Dry_Wet ammount (float)
+    2) Feedback ammount (flaot)
+    3) Filter frequency (double)
+    4) Lfo (int)
+    5) Combo box (std::string)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Modulate the delay time
+    2) name and save presets
+    3) filter the delay tap
  */
 
 /*
@@ -375,73 +370,73 @@ each property for UDTs 5 - 9.
 */
 
 /*
-Thing 5)
+Thing 5) Dry_Wet ammount
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Mix range (float)
+    2) Modulation ammount (int)
+    3) MIDI cc range (double)
+    4) UI control Type (std::string)
+    5) Color scheme (double)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) process audio signal in parallel 
+    2) can be controlled via extrenal MIDI cc
+    3) custom UI settings
  */
 
 /*
-Thing 6)
+Thing 6) Combo box 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Save (std::string)
+    2) Load (std::string)
+    3) Effect Mode (std::string)
+    4) Create (std::string)
+    5) Compare (int)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Save plug-in presets 
+    2) Load plug-in presets 
+    3) Switch between effects types
  */
 
 /*
-Thing 7)
+Thing 7) Feedback ammount
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Feedback range (float)
+    2) circuti mode (std::string)
+    3) Modulation tagert (bool)
+    4) UI control Type (std::string)
+    5) Modulation range (int)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) send feedback ammout into distortion
+    2) choose between digital and anolog circuit modes
+    3) become a targer for modulation
  */
 
 /*
-Thing 8)
+Thing 8) Filter frequency
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) High pass (double)
+    2) Low pass  (double)
+    3) Q (float)
+    4) Shelve (int)
+    5) Circuit mode (std::string)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) cut low frequency content 
+    2) chage the eq's bandiwth 
+    3) switch between analog or digital circuit modelling
  */
 
 /*
-Thing 9)
+Thing 9) Lfo 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Waveforms (std::string)
+    2) Range (int)
+    3) Destinations (std::string)
+    4) Rate (double)
+    5) Target (bool)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) choose between different wave shapes
+    2) modulate varius plug-in targets
+    3) set the speed of the modulation
  */
 
 /*
@@ -455,6 +450,127 @@ Move them below this block comment and put them in numerical order
 The next thing that will happen is that I will review the 
 pseudo-code that you have written.
 Send me a DM to review your pull request when the project is ready for review.
+
+Thing 1)  Midi Controller
+5 properties:
+    - number of encorders
+    - number of MIDI modes 
+    - number of presets
+    - MIDI message type
+    - MIDI connection type
+3 things it can do:
+    - send out Control Changes
+    - change between MIDI modes
+    - save user custom presets
+
+Thing 2)  Effects Pedal
+5 properties:
+    - number of effects modules
+    - number of modes for signal processing
+    - number of controls
+    - number of inputs
+    - number of outputs
+3 things it can do:
+    - load different effects type per module
+    - process signal in-series or parallel 
+    - custom assigning effect parameters to UI   
+
+Thing 3)  AI Synth
+5 properties:
+    - number of machine learning models
+    - ammount of neural nodes
+    - number of synthesis parameters
+    - number of inputs
+    - number of outputs
+3 things it can do:
+     - train models via user-inputs
+     - store machine learning models data
+     - map model-data to the synthesiser parameters 
+
+Thing 4:  Virtual Mic-pre 
+5 properties:
+     - number of pre-amp models
+     - number of circuit type
+     - number of microprones 
+     - ammount of storable presets
+     - number of color schemes
+3 things it can do:
+    - analog-vitrual emulation of mic pre-amps
+     - choose between circuit and mic types
+     - save user presets   
+
+Thing 5) ModDelay
+5 properties:
+    1) Dry_Wet ammount (float)
+    2) Feedback ammount (flaot)
+    3) Filter frequency (double)
+    4) Lfo (int)
+    5) Combo box (std::string)
+3 things it can do:
+    1) Modulate the delay time
+    2) name and save presets
+    3) filter the delay tap
+
+Thing 6) Dry_Wet ammount
+5 properties:
+    1) Mix range (float)
+    2) Modulation ammount (int)
+    3) MIDI cc range (double)
+    4) UI control Type (std::string)
+    5) Color scheme (double)
+3 things it can do:
+    1) process audio signal in parallel 
+    2) can be controlled via extrenal MIDI cc
+    3) custom UI settings
+
+Thing 7) Combo box 
+5 properties:
+    1) Save (std::string)
+    2) Load (std::string)
+    3) Effect Mode (std::string)
+    4) Create (std::string)
+    5) Compare (int)
+3 things it can do:
+    1) Save plug-in presets 
+    2) Load plug-in presets 
+    3) Switch between effects types
+
+Thing 8) Feedback ammount
+5 properties:
+    1) Feedback range (float)
+    2) circuti mode (std::string)
+    3) Modulation tagert (bool)
+    4) UI control Type (std::string)
+    5) Modulation range (int)
+3 things it can do:
+    1) send feedback ammout into distortion
+    2) choose between digital and anolog circuit modes
+    3) become a targer for modulation
+
+Thing 9) Filter frequency
+5 properties:
+    1) High pass (double)
+    2) Low pass  (double)
+    3) Q (float)
+    4) Shelve (int)
+    5) Circuit mode (std::string)
+3 things it can do:
+    1) cut low frequency content 
+    2) chage the eq's bandiwth 
+    3) switch between analog or digital circuit modelling
+
+Thing 10) Lfo 
+5 properties:
+    1) Waveforms (std::string)
+    2) Range (int)
+    3) Destinations (std::string)
+    4) Rate (double)
+    5) Target (bool)
+3 things it can do:
+    1) choose between different wave shapes
+    2) modulate varius plug-in targets
+    3) set the speed of the modulation
+
 */
 
 /*
