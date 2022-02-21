@@ -150,57 +150,7 @@ Part 1b Assignment:
         b) remember: these properties will eventually become
         primitives.
         c) pick properties that can eventually be represented with 
-        'int float double bool char std::string'.
-*/
-
-/*
-Thing 1:  Midi Controller
-    5 properties:
-        - number of encorders
-        - number of MIDI modes 
-        - number of presets
-        - MIDI message type
-        - MIDI connection type
-    3 things it can do:
-        - send out Control Changes
-        - change between MIDI modes
-        - save user custom presets
-
-Thing 2:  Effects Pedal
-    5 properties:
-        - number of effects modules
-        - number of modes for signal processing
-        - number of controls
-        - number of inputs
-        - number of outputs
-    3 things it can do:
-        - load different effects type per module
-        - process signal in-series or parallel 
-        - custom assigning effect parameters to UI   
-
-Thing 3:  AI Synth
-    5 properties:
-        - number of machine learning models
-        - ammount of neural nodes
-        - number of synthesis parameters
-        - number of inputs
-        - number of outputs
-    3 things it can do:
-        - train models via user-inputs
-        - store machine learning models data
-        - map model-data to the synthesiser parameters 
-
-Thing 4:  Virtual Mic-pre 
-    5 properties:
-        - number of pre-amp models
-        - number of circuit type
-        - number of microprones 
-        - ammount of storable presets
-        - number of color schemes
-    3 things it can do:
-        - analog-vitrual emulation of mic pre-amps
-        - choose between circuit and mic types
-        - save user presets       
+        'int float double bool char std::string'.     
  */
 
  /*
@@ -267,20 +217,6 @@ Part 1c assignment:
             Brightness (double)
             area in cm2 (int)
             brand (std::string)
-*/
-
-/*
-Thing 10) ModDelay
-5 properties:
-    1) Dry_Wet ammount (float)
-    2) Feedback ammount (flaot)
-    3) Filter frequency (double)
-    4) Lfo (int)
-    5) Combo box (std::string)
-3 things it can do:
-    1) Modulate the delay time
-    2) name and save presets
-    3) filter the delay tap
  */
 
 /*
@@ -370,76 +306,6 @@ each property for UDTs 5 - 9.
 */
 
 /*
-Thing 5) Dry_Wet ammount
-5 properties:
-    1) Mix range (float)
-    2) Modulation ammount (int)
-    3) MIDI cc range (double)
-    4) UI control Type (std::string)
-    5) Color scheme (double)
-3 things it can do:
-    1) process audio signal in parallel 
-    2) can be controlled via extrenal MIDI cc
-    3) custom UI settings
- */
-
-/*
-Thing 6) Combo box 
-5 properties:
-    1) Save (std::string)
-    2) Load (std::string)
-    3) Effect Mode (std::string)
-    4) Create (std::string)
-    5) Compare (int)
-3 things it can do:
-    1) Save plug-in presets 
-    2) Load plug-in presets 
-    3) Switch between effects types
- */
-
-/*
-Thing 7) Feedback ammount
-5 properties:
-    1) Feedback range (float)
-    2) circuti mode (std::string)
-    3) Modulation tagert (bool)
-    4) UI control Type (std::string)
-    5) Modulation range (int)
-3 things it can do:
-    1) send feedback ammout into distortion
-    2) choose between digital and anolog circuit modes
-    3) become a targer for modulation
- */
-
-/*
-Thing 8) Filter frequency
-5 properties:
-    1) High pass (double)
-    2) Low pass  (double)
-    3) Q (float)
-    4) Shelve (int)
-    5) Circuit mode (std::string)
-3 things it can do:
-    1) cut low frequency content 
-    2) chage the eq's bandiwth 
-    3) switch between analog or digital circuit modelling
- */
-
-/*
-Thing 9) Lfo 
-5 properties:
-    1) Waveforms (std::string)
-    2) Range (int)
-    3) Destinations (std::string)
-    4) Rate (double)
-    5) Target (bool)
-3 things it can do:
-    1) choose between different wave shapes
-    2) modulate varius plug-in targets
-    3) set the speed of the modulation
- */
-
-/*
 You've just defined 10 UDTs!
 4 of them are unrelated (UDTs 1-4).
 5 of them form the sub-objects that make up the 10th UDT. 
@@ -511,9 +377,9 @@ Thing 5) ModDelay
     2) name and save presets
     3) filter the delay tap
 
-Thing 6) Dry_Wet ammount
+Thing 6) Wet/Dry Control Widget 
 5 properties:
-    1) Mix range (float)
+    1) Dry/Wet ammount(float)
     2) Modulation ammount (int)
     3) MIDI cc range (double)
     4) UI control Type (std::string)
@@ -523,7 +389,7 @@ Thing 6) Dry_Wet ammount
     2) can be controlled via extrenal MIDI cc
     3) custom UI settings
 
-Thing 7) Combo box 
+Thing 7) Control panel 
 5 properties:
     1) Save (std::string)
     2) Load (std::string)
@@ -535,9 +401,9 @@ Thing 7) Combo box
     2) Load plug-in presets 
     3) Switch between effects types
 
-Thing 8) Feedback ammount
+Thing 8) Feedback Control Widget
 5 properties:
-    1) Feedback range (float)
+    1) Feedback ammount (float)
     2) circuti mode (std::string)
     3) Modulation tagert (bool)
     4) UI control Type (std::string)
@@ -547,7 +413,7 @@ Thing 8) Feedback ammount
     2) choose between digital and anolog circuit modes
     3) become a targer for modulation
 
-Thing 9) Filter frequency
+Thing 9) Filter Control Widget
 5 properties:
     1) High pass (double)
     2) Low pass  (double)
@@ -559,17 +425,17 @@ Thing 9) Filter frequency
     2) chage the eq's bandiwth 
     3) switch between analog or digital circuit modelling
 
-Thing 10) Lfo 
+Thing 10) Performance Rack 
 5 properties:
-    1) Waveforms (std::string)
-    2) Range (int)
-    3) Destinations (std::string)
-    4) Rate (double)
-    5) Target (bool)
+    1) Control Panel
+    2) Midi Controller
+    3) AI Synth
+    4) Virtual Mic-pre
+    5) ModDelay
 3 things it can do:
-    1) choose between different wave shapes
-    2) modulate varius plug-in targets
-    3) set the speed of the modulation
+    1) Save and Load presets
+    2) Combine instruments and effects chains
+    3) Can be controlled via MIDI cc
 
 */
 
