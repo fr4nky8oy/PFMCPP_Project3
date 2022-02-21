@@ -319,11 +319,11 @@ Send me a DM to review your pull request when the project is ready for review.
 
 Thing 1)  Midi Controller
 5 properties:
-    - number of encorders
-    - number of MIDI modes 
-    - number of presets
-    - MIDI message type
-    - MIDI connection type
+    - number of encorders (int)
+    - number of MIDI modes  (int)
+    - number of presets (int)
+    - MIDI message type (std::string)
+    - MIDI connection type (std::string)
 3 things it can do:
     - send out Control Changes
     - change between MIDI modes
@@ -331,11 +331,11 @@ Thing 1)  Midi Controller
 
 Thing 2)  Effects Pedal
 5 properties:
-    - number of effects modules
-    - number of modes for signal processing
-    - number of controls
-    - number of inputs
-    - number of outputs
+    - number of effects modules (int)
+    - number of modes for signal processing (int)
+    - number of controls (double)
+    - number of inputs (int)
+    - number of outputs (int)
 3 things it can do:
     - load different effects type per module
     - process signal in-series or parallel 
@@ -343,11 +343,11 @@ Thing 2)  Effects Pedal
 
 Thing 3)  AI Synth
 5 properties:
-    - number of machine learning models
-    - ammount of neural nodes
-    - number of synthesis parameters
-    - number of inputs
-    - number of outputs
+    - type of machine learning models (std::string)
+    - ammount of neural nodes (double)
+    - number of synthesis parameters (int)
+    - number of inputs (int)
+    - number of outputs (int)
 3 things it can do:
      - train models via user-inputs
      - store machine learning models data
@@ -355,11 +355,11 @@ Thing 3)  AI Synth
 
 Thing 4:  Virtual Mic-pre 
 5 properties:
-     - number of pre-amp models
-     - number of circuit type
-     - number of microprones 
-     - ammount of storable presets
-     - number of color schemes
+     - number of pre-amp models (int)
+     - number of circuit type (double)
+     - number of microprones (int)
+     - ammount of storable presets (int)
+     - type of color schemes (std::string)
 3 things it can do:
     - analog-vitrual emulation of mic pre-amps
      - choose between circuit and mic types
@@ -368,7 +368,7 @@ Thing 4:  Virtual Mic-pre
 Thing 5) ModDelay
 5 properties:
     1) Dry_Wet ammount (float)
-    2) Feedback ammount (flaot)
+    2) Feedback ammount (float)
     3) Filter frequency (double)
     4) Lfo (int)
     5) Combo box (std::string)
