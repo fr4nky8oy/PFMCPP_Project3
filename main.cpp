@@ -186,128 +186,258 @@ struct CarWash //                                   1) define an empty struct fo
     */
 };
 
-/*
-Thing 1)  Midi Controller
-5 properties:
-    - number of encorders (int)
-    - number of MIDI modes  (int)
-    - number of presets (int)
-    - MIDI message type (std::string)
-    - MIDI connection type (std::string)
-3 things it can do:
-    - send out Control Changes
-    - change between MIDI modes
-    - save user custom presets
+struct MidiController 
 
-Thing 2)  Effects Pedal
-5 properties:
-    - number of effects modules (int)
-    - number of modes for signal processing (int)
-    - number of controls (double)
-    - number of inputs (int)
-    - number of outputs (int)
-3 things it can do:
-    - load different effects type per module
-    - process signal in-series or parallel 
-    - custom assigning effect parameters to UI   
+{
+    // number of encorders
+    int numEncoders = 10;
+    // number of MIDI modes  (int)
+    int numMidimodes = 2;
+    // number of presets
+    int numPresets = 100;
+    // MIDI message type
+    std::string midiMode = "Note"; 
+    // MIDI connection type 
+    std::string midiConnect = "USB"; 
+    
+    struct ControllerType
+    {
+        std::string model = "MPK10"; 
+        bool keyboardMode = false;
+        bool afterTouchisPoly = true;
+        int triggerPads = 10;
+        float velocityRange = 0.1f;
 
-Thing 3)  AI Synth
-5 properties:
-    - type of machine learning models (std::string)
-    - ammount of neural nodes (double)
-    - number of synthesis parameters (int)
-    - number of inputs (int)
-    - number of outputs (int)
-3 things it can do:
-     - train models via user-inputs
-     - store machine learning models data
-     - map model-data to the synthesiser parameters 
+        void loadUserKeyboard (bool velocitySensKeys = true, int octRange = 4);
+        int numKeysInOctave (int whiteKeys = 7, int blackKeys = 5);
+        float rangeOfKeys (float pressureDown = 0.1f, std::string = "noteOn");   
+    }; 
 
-Thing 4:  Virtual Mic-pre 
-5 properties:
-     - number of pre-amp models (int)
-     - number of circuit type (double)
-     - number of microprones (int)
-     - ammount of storable presets (int)
-     - type of color schemes (std::string)
-3 things it can do:
-    - analog-vitrual emulation of mic pre-amps
-     - choose between circuit and mic types
-     - save user presets   
+    // send out Control Changes
+    int txConChange (std::string = "label", bool tranmistMessage = true, int paramValue = 3);
+    // change between MIDI modes
+    void midiDeviceMode (std::string = "play", int channelOut = 10, bool noteSend = true); 
+    // save user custom presets
+    void userController (ControllerType KeysSlide, int touchEncoders = 3, bool automationWrite = true, std::string = "skinColor");
 
-Thing 5) ModDelay
-5 properties:
-    1) Dry_Wet ammount (float)
-    2) Feedback ammount (float)
-    3) Filter frequency (double)
-    4) Lfo (int)
-    5) Combo box (std::string)
-3 things it can do:
-    1) Modulate the delay time
-    2) name and save presets
-    3) filter the delay tap
+    ControllerType userPerformReady;
+};
 
-Thing 6) Wet/Dry Control Widget 
-5 properties:
-    1) Dry/Wet ammount(float)
-    2) Modulation ammount (int)
-    3) MIDI cc range (double)
-    4) UI control Type (std::string)
-    5) Color scheme (double)
-3 things it can do:
-    1) process audio signal in parallel 
-    2) can be controlled via extrenal MIDI cc
-    3) custom UI settings
+struct  EffectsPedal
 
-Thing 7) Control panel 
-5 properties:
-    1) Save (std::string)
-    2) Load (std::string)
-    3) Effect Mode (std::string)
-    4) Create (std::string)
-    5) Compare (int)
-3 things it can do:
-    1) Save plug-in presets 
-    2) Load plug-in presets 
-    3) Switch between effects types
+{
 
-Thing 8) Feedback Control Widget
-5 properties:
-    1) Feedback ammount (float)
-    2) circuti mode (std::string)
-    3) Modulation tagert (bool)
-    4) UI control Type (std::string)
-    5) Modulation range (int)
-3 things it can do:
-    1) send feedback ammout into distortion
-    2) choose between digital and anolog circuit modes
-    3) become a targer for modulation
+    // number of effects modules
+    int numEfxModules = 5;
+    // number of modes for signal processing
+    int numSigProcessMod = 2;
+    // number of controls
+    double numControls = 5.2;
+    // number of inputs
+    int inNum = 4;
+    // number of outputs
+    int outNum = 4;
 
-Thing 9) Filter Control Widget
-5 properties:
-    1) High pass (double)
-    2) Low pass  (double)
-    3) Q (float)
-    4) Shelve (int)
-    5) Circuit mode (std::string)
-3 things it can do:
-    1) cut low frequency content 
-    2) chage the eq's bandiwth 
-    3) switch between analog or digital circuit modelling
+    // load different effects type per module
+    void loadEfxonChain(bool chainAisActive = true, std::string = "slotA", int efxTypeSingle = 1);
+    // process signal in-series or parallel 
+    void processingTypeChain(std::string series, int mixSendAmmount = 100);
+    // custom assigning effect parameters to UI
+    int userParameterAssign(int ecordersNumUI = 5, float encoderRangeUI = 1.0f, std::string = "layoutUI");    
+};
 
-Thing 10) Performance Rack 
-5 properties:
-    1) Control Panel
-    2) Midi Controller
-    3) AI Synth
-    4) Virtual Mic-pre
-    5) ModDelay
-3 things it can do:
-    1) Save and Load presets
-    2) Combine instruments and effects chains
-    3) Can be controlled via MIDI cc
+struct AISynth
 
-*/
+{
+    // type of machine learning models (std::string)
+    std::string miModel = "NearestN";
+    // ammount of neural nodes
+    double numNNodes = 20.2;
+    // number of synthesis parameters (int)
+    int synthParamNum = 10;
+    // number of inputs
+    int inputNumSynth = 2;
+    // number of outputs
+    int outputNumSynth = 2;
+
+    struct Synthesis
+    {
+
+    int typeOfSynthesis = 4;
+    int waveShapes = 4;
+    std::string modMatrix = "ModPanel";
+    double osVersion = 2.1;
+    float touchStrip = 0.9f;
+    
+    void subtractSynth(std::string subtractive, int waveTone = 1);
+    float microTuning(double oscAll = 4.40, bool a4isPressed = true);
+    int filterMode(bool filterIsLowPass = true, float cutOffRange = 0.2f);
+    
+    };
+
+     // train models via user-inputs
+     void trainModel(Synthesis aNewSynth, std::string mlModel, int learnFeatures = 8);    
+     // store machine learning models data
+     int storeFeatInputs(int features = 10, float xyzValues = 1.0, bool isRecorded = true);
+     // map model-data to the synthesiser parameters 
+     void mapModelToSynth(bool mapModeisActive = true, bool modelLoaded = true, int targetParams = 10);
+
+Synthesis SythesisModel;
+
+};
+
+struct  VirtualMicPre
+
+{
+     // number of pre-amp models (int)
+     int numPreAmpMod = 10;
+     // number of circuit type (double)
+     double numCircType = 21.0;
+     // number of microprones (int)
+     int numOfMics = 20;
+     // ammount of storable presets (int)
+     int numOfUserPresets = 127;
+     // type of color schemes (std::string)
+     std::string colorMe = "AbbeyClassic";
+
+     // analog-vitrual emulation of mic pre-amps
+     void virtualAnalogPre(bool latencyZeroMode = true, std::string micModel = "Akg");
+     // choose between circuit and mic types
+     int micOperatingPrinciple(std::string polarPattern = "Cardioid", int phantomPower = 48);
+     // save user presets
+     void userMicSetUp(double circuitAndMic = 1.1, std::string vocalSetUp = "VoxLead");
+};
+
+struct ModDelay
+
+{
+    // Dry_Wet ammount 
+    float modDelaydryWet = 0.5f;
+    // Feedback ammount 
+    float feedBack = 0.9f;
+    // Filter frequency
+    double filterFreq = 12.20; 
+    // lfo
+    int lfoRate = 1;
+    // Combobox 
+    std::string ComboBox = "SaveUs";
+
+    // Modulate the delay time
+    float modDelayTime(int tapSignals = 2, double delTimeMs = 20.10, std::string lfoShapeWave = "sine");
+    // name and save presets
+    int modDelayPreset(int paramToSave = 10, std::string labelMePlease = "TapeSpace");
+    // filter the delay tap
+    void cascadeFiltTaps (bool delayIsStereo = true, std::string filterType = "Notch");
+};
+
+struct  WetDryControlWidget 
+
+{
+    // Dry/Wet ammount(float)
+    float dryWetAmmout = 0.1f;
+    // Modulation ammount (int)
+    int modAmmount = 1; 
+    // MIDI cc range (double)
+    double midiCCrange = 12.70;
+    // UI control Type (std::string)
+    std::string uiControlType = "Vertical Slider"; 
+    // Color scheme (double)
+    double colorSchemeToAssign = 23.30;
+
+    // process audio signal in parallel 
+    void auxProcessingType(bool isBusInputActive = true, float bus1Ammount = 3.0f);
+    // can be controlled via extrenal MIDI cc
+    void learnExternalMidi(std::string midiRxPort = "USB", int midiRxCC = 20, bool parameterLearned = true);
+    // custom UI settings
+    int layoutUI(int paramsToInclude = 10, bool includeSliders = false);
+};
+
+struct ControlPanel 
+
+{
+    // Save (std::string)
+    std::string SavePreset = "Save New";
+    // Load 
+    std::string LoadPreset = "Load Preset";
+    // Effect Mode 
+    std::string EffectMode = "Multi Effect";
+    // Create 
+    std::string createUserType = "Mode A";
+    // Compare
+    int switchPresetToCompare = 2; 
+
+    // Save plug-in presets 
+    void savToUserFolder(std::string fileExtension = "Cpx", bool paramsAreSaved = true);
+    // Load plug-in presets 
+    int loadFromUserFolder(std::string fileCategory = "Bassline", int presetValue = 10);
+    // Switch between effects types
+    int compareAB(int loadA = 0, int loadB = 1);
+};
+
+struct FeedbackControlWidget
+
+{
+    // Feedback ammount 
+    float feedBackAmmount = 1.0;
+    // circuti mode 
+    std::string circutiModeToUse = "Digital"; 
+    // Modulation tagert (
+    bool canBeModulated = true;
+    // UI control Type (std::string)
+    std::string uiControlToUse = "Rotary";
+    // Modulation range (int)
+    int modRangAvailable = 100;
+
+    // send feedback ammout into distortion
+    void feedbackOverload(float feedItBackIn = 1.1f, bool isExcedingLimit = true, std::string warningOn = "RockOn");
+    // choose between digital and anolog circuit modes
+    int typeOfFeedback(std::string feebackType = "Dub Classic", int loadSoundReference = 3);
+    // become a target for modulation
+    void becomeATarget(bool parameterIsVisisble = true, std::string mappingMode = "Bypolar");
+};
+
+struct FilterControlWidget
+
+{
+    // High pass
+    double highPassFilter = 67.00;
+    // Low pass 
+    double lowPassFilter = 40.20;
+    // Q
+    float Qrange = 1.0f;
+    // Shelve
+    int shelveAvailable = 2;
+    // Circuit mode 
+    std::string BritishMode = "NEVE";
+
+    // cut low frequency content 
+    float removeRumble(std::string filterType = "HighPass", bool secondOrderFilter = true, double rumbleRange = 10.90);
+    // change the eq's bandiwth 
+    int setMusicalQ(int resonanceWidth = 4, bool fullyParametricMode = true);
+    // switch between analog or digital circuit modelling
+    void vintageOrModernMode(std::string harmonicColoration = "Retro", int componentType = 2);
+};
+
+struct PerformanceRack 
+{
+    // Control Panel
+    int controlPanel = 1;
+    // MidiController
+    bool MidiCompatible = true;
+    // AISynth
+    int machineLearningModels = 10;
+    // Virtual Mic-pre
+    std::string MicAndPreAmps = "Virtual Studio";
+    // ModDelay
+    int efxCombinations = 8;
+
+    // Save and Load presets
+    void SavePerformanceRack(std::string userPerformanceRack = "New Rack", bool saveToUserFolder = true);
+    // Combine instruments and effects chains
+    int userPerformanceSetUp(int instrumentsToLoad = 1, int effectsToLoad = 3);
+    // Can be controlled via MIDI cc
+    void controlViaMidiCC(bool isRackVisible = true, int midiChannel = 1);
+};
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
