@@ -187,7 +187,6 @@ struct CarWash //                                   1) define an empty struct fo
 };
 
 struct MidiController 
-
 {
     // number of encorders
     int numEncoders = 10;
@@ -202,15 +201,23 @@ struct MidiController
     
     struct ControllerType
     {
+        //controller model
         std::string model = "MPK10"; 
+        //cotroller mode
         bool keyboardMode = false;
+        //poly aftertouch mode
         bool afterTouchisPoly = true;
+        // number of trigger pads
         int triggerPads = 10;
+        // velocity responsivness range
         float velocityRange = 0.1f;
 
+        // the midi controller can be used as a keyboard
         void loadUserKeyboard (bool velocitySensKeys = true, int octRange = 4);
+        // the controller can have custom-scales set up
         int numKeysInOctave (int whiteKeys = 7, int blackKeys = 5);
-        float rangeOfKeys (float pressureDown = 0.1f, std::string = "noteOn");   
+        // users can change the velocity range on each key
+        float velRangeOfKeys (float pressureDown = 0.1f, std::string = "noteOn");   
     }; 
 
     // send out Control Changes
@@ -224,9 +231,7 @@ struct MidiController
 };
 
 struct  EffectsPedal
-
 {
-
     // number of effects modules
     int numEfxModules = 5;
     // number of modes for signal processing
@@ -247,7 +252,6 @@ struct  EffectsPedal
 };
 
 struct AISynth
-
 {
     // type of machine learning models (std::string)
     std::string miModel = "NearestN";
@@ -262,17 +266,23 @@ struct AISynth
 
     struct Synthesis
     {
+        // synthesis methods
+        int typeOfSynthesis = 4;
+        // type of waveforms 
+        int waveShapes = 4;
+        // modulations router 
+        std::string modMatrix = "ModPanel";
+        // digital controlled via an operating system 
+        double osVersion = 2.1;
+        // pressure sensor strip
+        float touchStrip = 0.9f;
 
-    int typeOfSynthesis = 4;
-    int waveShapes = 4;
-    std::string modMatrix = "ModPanel";
-    double osVersion = 2.1;
-    float touchStrip = 0.9f;
-    
-    void subtractSynth(std::string subtractive, int waveTone = 1);
-    float microTuning(double oscAll = 4.40, bool a4isPressed = true);
-    int filterMode(bool filterIsLowPass = true, float cutOffRange = 0.2f);
-    
+        // can build sounds using subtractive synthesis 
+        void subtractSynth(std::string subtractive, int waveTone = 1);
+        // fine tuning adjustments for all the oscillators
+        float microTuning(double oscAll = 4.40, bool a4isPressed = true);
+        // harmonics subtraction via low pass filtering 
+        int filterMode(bool filterIsLowPass = true, float cutOffRange = 0.2f);
     };
 
      // train models via user-inputs
@@ -282,12 +292,10 @@ struct AISynth
      // map model-data to the synthesiser parameters 
      void mapModelToSynth(bool mapModeisActive = true, bool modelLoaded = true, int targetParams = 10);
 
-Synthesis SythesisModel;
-
+    Synthesis SythesisModel;
 };
 
 struct  VirtualMicPre
-
 {
      // number of pre-amp models (int)
      int numPreAmpMod = 10;
@@ -309,7 +317,6 @@ struct  VirtualMicPre
 };
 
 struct ModDelay
-
 {
     // Dry_Wet ammount 
     float modDelaydryWet = 0.5f;
@@ -331,7 +338,6 @@ struct ModDelay
 };
 
 struct  WetDryControlWidget 
-
 {
     // Dry/Wet ammount(float)
     float dryWetAmmout = 0.1f;
@@ -353,7 +359,6 @@ struct  WetDryControlWidget
 };
 
 struct ControlPanel 
-
 {
     // Save (std::string)
     std::string SavePreset = "Save New";
@@ -375,7 +380,6 @@ struct ControlPanel
 };
 
 struct FeedbackControlWidget
-
 {
     // Feedback ammount 
     float feedBackAmmount = 1.0;
@@ -397,7 +401,6 @@ struct FeedbackControlWidget
 };
 
 struct FilterControlWidget
-
 {
     // High pass
     double highPassFilter = 67.00;
