@@ -214,18 +214,18 @@ struct MidiController
 
         // the midi controller can be used as a keyboard
         void loadUserKeyboard (bool velocitySensKeys = true, int octRange = 4);
-        // the controller can have custom-scales set up
+        // set the number of keys in an octave
         int numKeysInOctave (int whiteKeys = 7, int blackKeys = 5);
-        // users can change the velocity range on each key
-        float velRangeOfKeys (float pressureDown = 0.1f, std::string = "noteOn");   
+        //set the velocity range for a particular key
+        void setVelocityRangeForKeys(float pressureDown = 0.1f, std::string = "noteOn");   
     }; 
 
     // send out Control Changes
-    int txConChange (std::string = "label", bool tranmistMessage = true, int paramValue = 3);
+    int txConChange(std::string = "label", bool tranmistMessage = true, int paramValue = 3);
     // change between MIDI modes
-    void midiDeviceMode (std::string = "play", int channelOut = 10, bool noteSend = true); 
+    void changeMidieMode(std::string = "play", int channelOut = 10, bool noteSend = true); 
     // save user custom presets
-    void userController (ControllerType KeysSlide, int touchEncoders = 3, bool automationWrite = true, std::string = "skinColor");
+    void saveUserPreset(ControllerType KeysSlide, int touchEncoders = 3, bool automationWrite = true, std::string = "skinColor");
 
     ControllerType userPerformReady;
 };
@@ -246,9 +246,9 @@ struct  EffectsPedal
     // load different effects type per module
     void loadEfxonChain(bool chainAisActive = true, std::string = "slotA", int efxTypeSingle = 1);
     // process signal in-series or parallel 
-    void processingTypeChain(std::string series, int mixSendAmmount = 100);
+    void processInSeriesOrParallel(std::string series, int mixSendAmmount = 100);
     // custom assigning effect parameters to UI
-    int userParameterAssign(int ecordersNumUI = 5, float encoderRangeUI = 1.0f, std::string = "layoutUI");    
+    int assignEfxParamsToUi(int ecordersNumUI = 5, float encoderRangeUI = 1.0f, std::string = "layoutUI");    
 };
 
 struct AISynth
@@ -277,12 +277,12 @@ struct AISynth
         // pressure sensor strip
         float touchStrip = 0.9f;
 
-        // can build sounds using subtractive synthesis 
-        void subtractSynth(std::string subtractive, int waveTone = 1);
-        // fine tuning adjustments for all the oscillators
-        float microTuning(double oscAll = 4.40, bool a4isPressed = true);
-        // harmonics subtraction via low pass filtering 
-        int filterMode(bool filterIsLowPass = true, float cutOffRange = 0.2f);
+        // sound design using subtractive synthesis 
+        void soundDesignSSynth(std::string subtractive, int waveTone = 1);
+        // fine tuning all the oscillators
+        float fineTuningAllOsc(double oscAll = 4.40, bool a4isPressed = true);
+        // low pass filtering the signal
+        int lowPassFilterSignal(bool filterIsLowPass = true, float cutOffRange = 0.2f);
     };
 
      // train models via user-inputs
@@ -308,12 +308,12 @@ struct  VirtualMicPre
      // type of color schemes (std::string)
      std::string colorMe = "AbbeyClassic";
 
-     // analog-vitrual emulation of mic pre-amps
-     void virtualAnalogPre(bool latencyZeroMode = true, std::string micModel = "Akg");
-     // choose between circuit and mic types
-     int micOperatingPrinciple(std::string polarPattern = "Cardioid", int phantomPower = 48);
-     // save user presets
-     void userMicSetUp(double circuitAndMic = 1.1, std::string vocalSetUp = "VoxLead");
+     // load an analog-vitrual pre-amp
+     void loadVirtualAnalogPreAmp(bool latencyZeroMode = true, std::string micModel = "Akg");
+     // combine circuit and mic types
+     int combineCircuitAndMicType(std::string polarPattern, int phantomPower = 48);
+     // save Mic and Pre-amp preset
+     void saverMicAndPreAmpPreset(double circuitAndMic = 1.1, std::string vocalSetUp = "VoxLead");
 };
 
 struct ModDelay
@@ -330,11 +330,11 @@ struct ModDelay
     std::string ComboBox = "SaveUs";
 
     // Modulate the delay time
-    float modDelayTime(int tapSignals = 2, double delTimeMs = 20.10, std::string lfoShapeWave = "sine");
-    // name and save presets
-    int modDelayPreset(int paramToSave = 10, std::string labelMePlease = "TapeSpace");
+    float modulateDelayTime(int tapSignals = 2, double delTimeMs = 20.10, std::string lfoShapeWave = "sine");
+    // save a ModDealy preset
+    int saveModDelayPreset(int paramToSave = 10, std::string labelMePlease = "TapeSpace");
     // filter the delay tap
-    void cascadeFiltTaps (bool delayIsStereo = true, std::string filterType = "Notch");
+    void filterDelayTap (bool delayIsStereo = true, std::string filterType = "Notch");
 };
 
 struct  WetDryControlWidget 
@@ -351,11 +351,11 @@ struct  WetDryControlWidget
     double colorSchemeToAssign = 23.30;
 
     // process audio signal in parallel 
-    void auxProcessingType(bool isBusInputActive = true, float bus1Ammount = 3.0f);
+    void processSignalInParallel(bool isBusInputActive = true, float bus1Ammount = 3.0f);
     // can be controlled via extrenal MIDI cc
     void learnExternalMidi(std::string midiRxPort = "USB", int midiRxCC = 20, bool parameterLearned = true);
-    // custom UI settings
-    int layoutUI(int paramsToInclude = 10, bool includeSliders = false);
+    // save custom UI settings
+    int saevCustomUISettins(int paramsToInclude = 10, bool includeSliders = false);
 };
 
 struct ControlPanel 
@@ -375,8 +375,8 @@ struct ControlPanel
     void savToUserFolder(std::string fileExtension = "Cpx", bool paramsAreSaved = true);
     // Load plug-in presets 
     int loadFromUserFolder(std::string fileCategory = "Bassline", int presetValue = 10);
-    // Switch between effects types
-    int compareAB(int loadA = 0, int loadB = 1);
+    // Switch effects types
+    int switchEffectsTypes(int loadA = 0, int loadB = 1);
 };
 
 struct FeedbackControlWidget
@@ -393,11 +393,11 @@ struct FeedbackControlWidget
     int modRangAvailable = 100;
 
     // send feedback ammout into distortion
-    void feedbackOverload(float feedItBackIn = 1.1f, bool isExcedingLimit = true, std::string warningOn = "RockOn");
-    // choose between digital and anolog circuit modes
-    int typeOfFeedback(std::string feebackType = "Dub Classic", int loadSoundReference = 3);
+    void sendFeedbackinDistortion(float feedItBackIn = 1.1f, bool isExcedingLimit = true, std::string warningOn = "RockOn");
+    // process feedback signal using digital or anolog mode
+    int processFeedbackMode(std::string feebackType = "Dub Classic", int loadSoundReference = 3);
     // become a target for modulation
-    void becomeATarget(bool parameterIsVisisble = true, std::string mappingMode = "Bypolar");
+    void becomeModTarget(bool parameterIsVisisble = true, std::string mappingMode = "Bypolar");
 };
 
 struct FilterControlWidget
@@ -413,12 +413,12 @@ struct FilterControlWidget
     // Circuit mode 
     std::string BritishMode = "NEVE";
 
-    // cut low frequency content 
-    float removeRumble(std::string filterType = "HighPass", bool secondOrderFilter = true, double rumbleRange = 10.90);
-    // change the eq's bandiwth 
-    int setMusicalQ(int resonanceWidth = 4, bool fullyParametricMode = true);
-    // switch between analog or digital circuit modelling
-    void vintageOrModernMode(std::string harmonicColoration = "Retro", int componentType = 2);
+    // remove low frequency content 
+    float removeLowFreqContent(std::string filterType = "HighPass", bool secondOrderFilter = true, double rumbleRange = 10.90);
+    // change the eq's bandwidth 
+    int changeQBandwidth(int resonanceWidth = 4, bool fullyParametricMode = true);
+    // process the singnal via a Vintage or Modern circuit modelling
+    void processViaVintageOrModern(std::string harmonicColoration = "Retro", int componentType = 2);
 };
 
 struct PerformanceRack 
@@ -434,12 +434,12 @@ struct PerformanceRack
     // ModDelay
     int efxCombinations = 8;
 
-    // Save and Load presets
-    void SavePerformanceRack(std::string userPerformanceRack = "New Rack", bool saveToUserFolder = true);
-    // Combine instruments and effects chains
-    int userPerformanceSetUp(int instrumentsToLoad = 1, int effectsToLoad = 3);
-    // Can be controlled via MIDI cc
-    void controlViaMidiCC(bool isRackVisible = true, int midiChannel = 1);
+    // Save Performance Rack presets
+    void savePerformanceRack(std::string userPerformanceRack = "New Rack", bool saveToUserFolder = true);
+    // merge instruments and effects into a rack
+    int mergeInstrAndEfxInRack(int instrumentsToLoad = 1, int effectsToLoad = 3);
+    // control rack parameters via MIDI cc
+    void controlRackParamsViaMidiCC(bool isRackVisible = true, int midiChannel = 1);
 };
 
 /*
