@@ -1,461 +1,446 @@
 /*
-Project 3 - Part 1a-d / 5
+Project 3 - Part 1e / 5
 Video:  Chapter 2 Part 5
 User-Defined Types
 
-Create a branch named Part1
+Continue your work on branch Part1
 
-Purpose: The entire purpose of this 5-part project is to get you 
-writing C++ code that compiles and to reinforce the syntax habits 
-that C++ requires.  
-What you create in this project will be used as the basis of 
-Project 5 in C++ Language Fundamentals.
+Purpose: The entire purpose of this 5-part project is to get you writing C++ code that compiles and to 
+reinforce the syntax habits that C++ requires.  
+What you create in this project will be used as the basis of Project 5 in the course.   
 
 ************************
-Part1 purpose:  Learn to write User-Defined Types (UDTs)
+Part1 purpose:  Learn to write UDTs
 
 You are going to write 10 UDTs in project3.  
-Part1 will be broken up into 5 separate steps, all on the same branch.
-    Part 1a: you will learn to think about an object in terms of 
-    its sub-objects.
-    
-    Part 1b: you will write 4 un-related UDTs in plain english.
-    
-    Part 1c: you will write 1 UDT in plain english that will be 
-    made of 5 related sub-objects.
-    
-    Part 1d: you will write plain-english UDTs for the 5 
-    sub-objects that form the UDT defined in Part 1c.
-    
-    Part 1e: you will convert those 10 plain-english UDTs into code 
-    that runs.
+Part1 will be broken up into 5 separate steps
+    Part 1a: you will learn to think about an object in terms of its sub-objects.
+    Part 1b: you will write 4 un-related UDTs in plain english
+    Part 1c: you will write 1 UDT in plain english that will be made of 5 related sub-objects
+    Part 1d: you will write plain-english UDTs for the 5 sub-objects that form the UDT defined in Part 1c
+    Part 1e: you will convert those 10 plain-english UDTs into code that runs.
 ************************
-*/
 
-/*
-Part 1a
-1) Look at the picture of the car interior (Part1a pic.jpg).  
-    It's in the list of files on the left in Replit.
-    Fill in the blanks below which break this car interior down 
-    into sub-objects.
+Convert your 10 Plain-english UDTs into code.
 
-Several sub-objects are listed below that make up this car's interior.
-    you're going to name several things that you'll find on each 
-    subobject.
-    you're going to name several things that each subobject can do.
-    If you've seen "Family Feud", we are going to do what they do 
-    in that show.
+I recommend compiling after finishing each one and making sure it compiles 
+without errors or warnings before moving on to writing the next UDT. 
 
-    A few blanks are filled in for you already.
+1) define an empty struct below your plain-english UDT. i.e.:
 
-Main Object: Car Interior
-Sub Object 1: Steering Wheel
-    Name 4 things you'll find on the:    Steering Wheel
-        1) paddle shifters
-        2) 'cruise control' controls
-        3) 
-        4) 
-    Name 2 things you can do with the:   Steering Wheel
-        1) adjust cruise control settings.
-        2)
-        
-Sub Object 2: Instrument Cluster
-    Name 4 things you'll find on the:   Instrument Cluster
-        1)
-        2)
-        3)
-        4)
-    Name 3 things you can do with the:   Instrument Cluster
-        1)
-        2)
-        3)
-    
-Sub Object 3: Environment Controls
-    Name 3 things you'll find on the:    Environment Controls
-        1)
-        2)
-        3)
-    Name 3 things you can do with the:   Environment Controls
-        1)
-        2)
-        3)
-
-Sub Object 4: Infotainment System
-    Name 3 things you'll find on the:    Infotainment System
-        1)
-        2)
-        3)
-    Name 3 things you can do with the:   Infotainment System
-        1)
-        2)
-        3)
-
-Sub Object 5: Seat 
-    Name 3 things you'll find on the:    Seat
-        1)
-        2)
-        3)
-    Name 2 things you can do with the:   Seat
-        1)
-        2)
-*/
-
-/*
-Part 1b
-Now you have some basic understanding of how to think of an object 
-in terms of its sub-objects.
-
-Next, write 4 un-related UDTs in plain english:
-*/
-/*
- example:  
- 
 Thing: Car Wash   
     5 properties:
         - number of vacuum cleaners
         - number of eco-friendly cleaning supplies
-        - the amount of water used per week.
-        - amount of profit made per week
+        - stores the amount of water used per week.
+        - stores amount of profit made per week
         - number of cars serviced per day
     3 things it can do:
         - wash and wax car
         - charge customer
         - detail the car interior
+ */
 
-    Notice that I did not use "has a vacuum cleaner" or "Has 
-    eco-friendly cleaning supplies" as one of the properties.
+#if false //ignore these #if #endif lines. they're just here to prevent compiler errors.
+struct CarWash
+{
+
+};
+#endif
+/*
+    - Do this for all 10 UDTs
+
+2) Below your plain-english UDT, Copy your 5 properties & 3 actions into the empty struct body.
+    - comment them out.
+    - Do this for all 10 UDTs
     
-    Writing 'has a ___" checks whether or not your object **has the 
-    ability to do something**.
-    Instead, I wrote "number of vacuum cleaners" and "number of 
-    eco-friendly cleaning supplies".  
+3) declare your member variables and member functions underneath each plain-english comment in your struct's body.
+    - give the member variables relevant data types
+    - Do this for all 10 UDTs
+    - if your functions return something other than 'void', add a comment explaining what is being returned.  see the example code below.
+ 
+4) make the function parameter list for those member functions use some of your User-Defined Types
+    - You'll write definitions/implementations for these functions in Project3 Part2
+    - you'll call each of these functions in Project3 part3
+    - Do this for all 10 UDTs
+ 
+5) make 2 of the 10 user-defined types have a nested class.  
+    - this nested class also needs 5 properties and 3 actions.
+    - these nested classes are not considered one of your 10 UDTs.
+    - this nested class must be related to the class it is nested inside
+ 
+6) your 10th UDT's properties should be instances of your #5-#9 UDTs.   
+    - No primitives allowed!
+ 
+7) After you finish defining each type, click the [run] button.  
+    Clear up any errors or warnings as best you can. 
+    if your code produces a [-Wpadded] warning, add '-Wno-padded' to the .replit file with the other compiler flags (-Weverything -Wno-missing-prototypes etc etc)
+ */
+
+/*
+ example:  
+
+Thing: Car Wash   
+    5 properties:
+        - number of vacuum cleaners
+        - number of eco-friendly cleaning supplies
+        - stores the amount of water used per week.
+        - stores amount of profit made per week
+        - number of cars serviced per day
+    3 things it can do:
+        - wash and wax car
+        - charge customer
+        - detail the car interior
+ */
+
+#include <iostream>
+#include <string>
+
+struct CarWash //                                   1) define an empty struct for each of your 10 types.       
+{
+    //number of vacuum cleaners                     2) copied and commented-out plain-english property
+    int numVacuumCleaners = 3; //                   3) member variables with relevant data types.
+    //number of eco-friendly cleaning supplies      
+    int numEcoFriendlyCleaningSupplies = 20;     
+    //stores the amount of water used per week.     
+    float waterUsedPerWeek = 200.f;            
+    //stores amount of profit made per week         
+    float profitPerWeek = 495.95f;               
+    //number of cars serviced per day               
+    int numberOfCarsServiced = 10;               
     
-    These are specific objects or amounts. 
+    struct Car //5)                                 Note that the nested type 'Car' is related to the 'CarWash' 
+    {
+        //2) member variables with relevant data types.  the names are appropriate for the U.D.T.'s purpose.
+        bool isAPickupTruck = false;
+        float gasMileage = 26.2f;        
+        int year = 1985;
+        std::string manufacturer = "Toyota";
+        std::string model = "Corolla";
+
+        //3) a member function whose parameter has a default value.
+        //the parameter name is related to the work the function will perform.
+        void fillTank(double fuelAmountInGallons = 2.0);  
+        void breakDown(std::string failureType, bool requiresTow = false);
+        int getMilesTraveledAnnually(bool includeUberLyftTrips); //3) returns the number of miles traveled
+    };
+
+    //wash and wax car
+    void washAndWaxCar(Car carA); //4) a member function whose parameter is a UDT.
+    //charge customer
+    float chargeCustomer(float discountPercentage); //3) returns the total amount charged.
+    //detail the car interior
+    void detailInterior(Car carB);
     
-    In C++ terms, this means to I want you to avoid using 'bool' 
-    (has a) as a member variable type.
-    Instead, prefer the other primitive types.
+    //5) a member variable whose type is a UDT.
+    Car carBeingServiced;  
 
-    In addition to the usual primitives (covered in Project 2), you 
-    can use 'std::string' to represent strings in this project.
- */
+    /*
+    Pay attention to the member functions that take an instance of 'Car'
+    Notice that there is a member variable of the same type.
 
-/*
-Part 1b Assignment:
-1)  Fill in the 4 UDTs below with a random UDT in plain english.
-    These 4 UDTs do not need to be related.
-        a) For each plain-english UDT, write out 5 traits or 
-        properties and 3 things it can do.
-        b) remember: these properties will eventually become
-        primitives.
-        c) pick properties that can eventually be represented with 
-        'int float double bool char std::string'.
-*/
+    It makes sense to pass a Car to the function 'washAndWaxCar' because car washes service MANY cars
+    However, they only service ONE car at a time.
+    the carBeingServiced's value would change every time you wash and wax the car. 
 
-/*
-Thing 1)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+    I see many students who write code emulating this format, but their usage does not make logical sense.  
+    Consider the following snippet:
 
-/*
-Thing 2)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+    struct SoccerTeam
+    {
+        struct Manager
+        {
+            ...
+        };
 
-/*
-Thing 3)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 4)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
- /*
-Part 1c
-You have just finished practicing writing out a UDT that is has 
-5 properties and can perform 3 actions.  
-
-Now you will write 1 UDT in plain english. 
-
-This UDT will be different than the previous 4 you wrote: It will 
-use UDTs to describe its 5 properties, as opposed to using C++ 
-primitives to describe the 5 properties.
-
-You will define these 5 'property' UDTs in Part 1d.
- */
-
- /*
-Part 1c example:
-    Cell Phone
-
-    A Cell Phone is built using the following 5 UDTs:
-        Display
-        Memory
-        CPU
-        Radio
-        Applications
-
-    A Cell Phone has 3 things it can do:
-        make a call
-        send a text
-        run an application.
-
-    Notice that I did not use "has a display" or "Has memory" or 
-    "has a cpu" as one of the properties of the CellPhone.
+        // train their skills
+        void trainPlayerSkills(Manager managerA);
     
-    Writing 'has a ___" checks whether or not your object **has 
-    the ability to do something**.
-    Instead, I wrote "Display" or "CPU".  These are specific 
-    objects or amounts. 
+        Manager teamManager;
+    };
+
+    It does not make sense to pass in a new Manager whenever you are going to train your team players.
+    Soccer teams have ONE manager.
+
+    a much more relevant usage would be adding a member function that hires a new manager:
+
+    struct SoccerTeam
+    {
+        struct Manager
+        {
+            ...
+        };
+
+        void hireNewManager(Manager newManager);
     
-    In C++ terms, this means to I want you to avoid using 'bool' 
-    (has a) as a member variable type.
-    Instead, prefer the other primitive types.
+        Manager teamManager;
+    };
 
-    When you choose your 5 smaller parts, remember that each of 
-    these 5 Sub Objects will need to be defined with 5 primitive 
-    properties and 3 actions EACH.
-*/
-/*
-Part 1c assignment:
-1) Fill in the 10th UDT below.
-    Define an object that is made of 5 sub-objects.
-    These parts will not be defined using Primitives, but instead 
-    will be their own UDTs you'll define in Part 1d.
+    We can safely assume that the 'Manager' instance that is being passed in will be replacing the current 'teamManager' variable without looking at any other code.
+    This is because the function name and function argument clearly indicate what they are/what they do.
 
-2) write the name of the primitive type you'll be using after each 
-    property in UDTs 1-4:
-    pick properties that can be represented with 
-    'int float double bool char std::string'.
-    example: 
-        Display:
-            Number of Pixels (int)
-            Amount of Power consumed (milliwatt-hours) (float)
-            Brightness (double)
-            area in cm2 (int)
-            brand (std::string)
-*/
+    Your function names and parameter names should make LOGICAL SENSE.
+    Readers of your code should be able to INTUITIVELY understand what your function implementations will do without actually seeing the implementations.
 
-/*
-Thing 10)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+    Keep this in mind when you define your UDTs in this project part.
+    */
+};
 
-/*
-Part 1d
-You now know how to define a UDT that is composed of other UDT.
-Now you will learn how to break down those sub-object UDTs into 
-their 5 properties and 3 actions.
+struct MidiController 
+{
+    // number of encorders
+    int numEncoders = 10;
+    // number of MIDI modes  (int)
+    int numMidimodes = 2;
+    // number of presets
+    int numPresets = 100;
+    // MIDI message type
+    std::string midiMode = "Note"; 
+    // MIDI connection type 
+    std::string midiConnect = "USB"; 
+    
+    struct ControllerType
+    {
+        //controller model
+        std::string model = "MPK10"; 
+        //cotroller mode
+        bool keyboardMode = false;
+        //poly aftertouch mode
+        bool afterTouchisPoly = true;
+        // number of trigger pads
+        int triggerPads = 10;
+        // velocity responsivness range
+        float velocityRange = 0.1f;
 
-The goal of Part 1d is to get you to think about breaking down an 
-object into smaller and smaller objects, until the smallest object 
-is made of up only C++ primitives and std::string. 
+        // the midi controller can be used as a keyboard
+        void loadUserKeyboard (bool velocitySensKeys = true, int octRange = 4);
+        // set the number of keys in an octave
+        int setNumKeysInOctave (int whiteKeys = 7, int blackKeys = 5);
+        //set the velocity range for a particular key
+        void setVelocityRangeForKeys(float pressureDown = 0.1f, std::string = "noteOn");   
+    }; 
 
-Revisiting the previous example:  
-Cell Phone
+    // send out Control Changes
+    int txConChange(std::string = "label", bool tranmistMessage = true, int paramValue = 3);
+    // change between MIDI modes
+    void changeMidieMode(std::string = "play", int channelOut = 10, bool noteSend = true); 
+    // save user custom presets
+    void saveUserPreset(ControllerType KeysSlide, int touchEncoders = 3, bool automationWrite = true, std::string = "skinColor");
 
-A Cell Phone is made up of the following 5 properties/sub-objects 
-and 3 actions:
-    Display
-    Memory
-    CPU
-    Radio
-    Applications
-3 actions:
-    make a call
-    send a text
-    run an application.
+    ControllerType userPerformReady;
+};
 
-These 5 properties can be broken down into their own sub-objects 
-and properties. 
+struct  EffectsPedal
+{
+    // number of effects modules
+    int numEfxModules = 5;
+    // number of modes for signal processing
+    int numSigProcessMod = 2;
+    // number of controls
+    double numControls = 5.2;
+    // number of inputs
+    int inNum = 4;
+    // number of outputs
+    int outNum = 4;
 
-If we break down the first property 'Display' into its 5 properties 
-we get:
-    brightness
-    amount of power consumed.
-    pixels
-    width in cm
-    height in cm
+    // load different effects type per module
+    void loadDiffEfxPerModule(bool chainAisActive = true, std::string = "slotA", int efxTypeSingle = 1);
+    // process signal in-series or parallel 
+    void processInSeriesOrParallel(std::string series, int mixSendAmmount = 100);
+    // custom assigning effect parameters to UI
+    int assignEfxParamsToUi(int ecordersNumUI = 5, float encoderRangeUI = 1.0f, std::string = "layoutUI");    
+};
 
-the Display's brightness can be represented with a Primitive, 
-such as a double. 
+struct AISynth
+{
+    // type of machine learning models (std::string)
+    std::string miModel = "NearestN";
+    // ammount of neural nodes
+    double numNNodes = 20.2;
+    // number of synthesis parameters (int)
+    int synthParamNum = 10;
+    // number of inputs
+    int inputNumSynth = 2;
+    // number of outputs
+    int outputNumSynth = 2;
 
-The amount of power consumed can also be represented with a 
-Primitive, such as a float or integer (i.e. 250mWa)
+    struct Synthesis
+    {
+        // synthesis methods
+        int typeOfSynthesis = 4;
+        // type of waveforms 
+        int waveShapes = 4;
+        // modulations router 
+        std::string modMatrix = "ModPanel";
+        // digital controlled via an operating system 
+        double osVersion = 2.1;
+        // pressure sensor strip
+        float touchStrip = 0.9f;
 
-The 'pixels' property must be represented with an array of Pixel 
-instances, as the screen has more than 1 row of pixels.
-    Arrays have not been discussed and can't be used in this 
-    project.
-    Instead, we can use an Integer primitive to store the 
-    Number of Pixels:
+        // using subtractive synthesis for sound design 
+        void useSubSynthForSoundDesign(std::string subtractive, int waveTone = 1);
+        // fine tuning all the oscillators
+        float fineTuningAllOsc(double oscAll = 4.40, bool a4isPressed = true);
+        // low pass filtering the signal
+        int lowPassFilterSignal(bool filterIsLowPass = true, float cutOffRange = 0.2f);
+    };
 
-Display:
-    Number of Pixels
-    Amount of Power consumed (milliwatt-hours)
-    Brightness
-    width in cm
-    height in cm
+     // train models via user-inputs
+     void trainModel(Synthesis aNewSynth, std::string mlModel, int learnFeatures = 8);    
+     // store machine learning models data
+     int storeFeatInputs(int features = 10, float xyzValues = 1.0, bool isRecorded = true);
+     // map model-data to the synthesiser parameters 
+     void mapModelToSynth(bool mapModeisActive = true, bool modelLoaded = true, int targetParams = 10);
 
-As you can see, the 'Display' UDT has been broken down to the 
-point of being able to describe it with C++ primitives. 
-*/
+    Synthesis SythesisModel;
+};
 
-/*
-Part 1d assignment:
-1) Fill in #5 - #9 below with plain-english UDTs for the 5 
-properties you created for UDT #10. 
-    example: 
-        If #10's first property was 'Engine', then `Thing 5)` 
-        will be `Engine`. 
-        You will need to provide 5 properties and 3 member 
-        functions of that Engine object in plain English.
-        Remember to pick properties that can be represented 
-        with 'int float double bool char std::string'.
+struct  VirtualMicPre
+{
+     // number of pre-amp models (int)
+     int numPreAmpMod = 10;
+     // number of circuit type (double)
+     double numCircType = 21.0;
+     // number of microprones (int)
+     int numOfMics = 20;
+     // ammount of storable presets (int)
+     int numOfUserPresets = 127;
+     // type of color schemes (std::string)
+     std::string colorMe = "AbbeyClassic";
 
-2) write the name of the primitive type you'll be using after 
-each property for UDTs 5 - 9.
-    You already did this for UDTs 1-4 in Part 1c.
-    Pick properties that can be represented with 
-    'int float double bool char std::string'
-    example: 
-        Display:
-            Number of Pixels (int)
-            Amount of Power consumed (milliwatt-hours) (float)
-            Brightness (double)
-            width in cm (int)
-            height in cm (int)
-*/
+     // load an analog-vitrual pre-amp
+     void loadVirtualAnalogPreAmp(bool latencyZeroMode = true, std::string micModel = "Akg");
+     // combine circuit and mic types
+     int combineCircuitAndMicType(std::string polarPattern, int phantomPower = 48);
+     // save Mic and Pre-amp preset
+     void saverMicAndPreAmpPreset(double circuitAndMic = 1.1, std::string vocalSetUp = "VoxLead");
+};
 
-/*
-Thing 5)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+struct ModDelay
+{
+    // Dry_Wet ammount 
+    float modDelaydryWet = 0.5f;
+    // Feedback ammount 
+    float feedBack = 0.9f;
+    // Filter frequency
+    double filterFreq = 12.20; 
+    // lfo
+    int lfoRate = 1;
+    // Combobox 
+    std::string ComboBox = "SaveUs";
 
-/*
-Thing 6)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+    // Modulate the delay time
+    float modulateDelayTime(int tapSignals = 2, double delTimeMs = 20.10, std::string lfoShapeWave = "sine");
+    // save a ModDealy preset
+    int saveModDelayPreset(int paramToSave = 10, std::string labelMePlease = "TapeSpace");
+    // filter the delay tap
+    void filterDelayTap (bool delayIsStereo = true, std::string filterType = "Notch");
+};
 
-/*
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+struct  WetDryControlWidget 
+{
+    // Dry/Wet ammount(float)
+    float dryWetAmmout = 0.1f;
+    // Modulation ammount (int)
+    int modAmmount = 1; 
+    // MIDI cc range (double)
+    double midiCCrange = 12.70;
+    // UI control Type (std::string)
+    std::string uiControlType = "Vertical Slider"; 
+    // Color scheme (double)
+    double colorSchemeToAssign = 23.30;
 
-/*
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+    // process audio signal in parallel 
+    void processSignalInParallel(bool isBusInputActive = true, float bus1Ammount = 3.0f);
+    // can be controlled via extrenal MIDI cc
+    void learnExternalMidi(std::string midiRxPort = "USB", int midiRxCC = 20, bool parameterLearned = true);
+    // save custom UI settings
+    int saevCustomUISettins(int paramsToInclude = 10, bool includeSliders = false);
+};
 
-/*
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
+struct ControlPanel 
+{
+    // Save (std::string)
+    std::string SavePreset = "Save New";
+    // Load 
+    std::string LoadPreset = "Load Preset";
+    // Effect Mode 
+    std::string EffectMode = "Multi Effect";
+    // Create 
+    std::string createUserType = "Mode A";
+    // Compare
+    int switchPresetToCompare = 2; 
 
-/*
-You've just defined 10 UDTs!
-4 of them are unrelated (UDTs 1-4).
-5 of them form the sub-objects that make up the 10th UDT. 
+    // Save plug-in presets 
+    void saveToUserFolder(std::string fileExtension = "Cpx", bool paramsAreSaved = true);
+    // Load plug-in presets 
+    int loadFromUserFolder(std::string fileCategory = "Bassline", int presetValue = 10);
+    // Switch effects types
+    int switchEffectsTypes(int loadA = 0, int loadB = 1);
+};
 
-Move them below this block comment and put them in numerical order 
-(1 - 10).
+struct FeedbackControlWidget
+{
+    // Feedback ammount 
+    float feedBackAmmount = 1.0;
+    // circuti mode 
+    std::string circutiModeToUse = "Digital"; 
+    // Modulation tagert (
+    bool canBeModulated = true;
+    // UI control Type (std::string)
+    std::string uiControlToUse = "Rotary";
+    // Modulation range (int)
+    int modRangAvailable = 100;
 
-The next thing that will happen is that I will review the 
-pseudo-code that you have written.
-Send me a DM to review your pull request when the project is ready for review.
-*/
+    // send feedback ammout into distortion
+    void sendFeedbackinDistortion(float feedItBackIn = 1.1f, bool isExcedingLimit = true, std::string warningOn = "RockOn");
+    // process feedback signal using digital or anolog mode
+    int processFeedbackMode(std::string feebackType = "Dub Classic", int loadSoundReference = 3);
+    // become a target for modulation
+    void becomeModTarget(bool parameterIsVisisble = true, std::string mappingMode = "Bypolar");
+};
+
+struct FilterControlWidget
+{
+    // High pass
+    double highPassFilter = 67.00;
+    // Low pass 
+    double lowPassFilter = 40.20;
+    // Q
+    float Qrange = 1.0f;
+    // Shelve
+    int shelveAvailable = 2;
+    // Circuit mode 
+    std::string BritishMode = "NEVE";
+
+    // remove low frequency content 
+    float removeLowFreqContent(std::string filterType = "HighPass", bool secondOrderFilter = true, double rumbleRange = 10.90);
+    // change the eq's bandwidth 
+    int changeQBandwidth(int resonanceWidth = 4, bool fullyParametricMode = true);
+    // process the singnal via a Vintage or Modern circuit modelling
+    void processViaVintageOrModern(std::string harmonicColoration = "Retro", int componentType = 2);
+};
+
+struct PerformanceRack 
+{
+    // Control Panel
+    int controlPanel = 1;
+    // MidiController
+    bool MidiCompatible = true;
+    // AISynth
+    int machineLearningModels = 10;
+    // Virtual Mic-pre
+    std::string MicAndPreAmps = "Virtual Studio";
+    // ModDelay
+    int efxCombinations = 8;
+
+    // Save Performance Rack presets
+    void savePerformanceRack(std::string userPerformanceRack = "New Rack", bool saveToUserFolder = true);
+    // merge instruments and effects into a rack
+    int mergeInstrAndEfxInRack(int instrumentsToLoad = 1, int effectsToLoad = 3);
+    // control rack parameters via MIDI cc
+    void controlRackParamsViaMidiCC(bool isRackVisible = true, int midiChannel = 1);
+};
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
