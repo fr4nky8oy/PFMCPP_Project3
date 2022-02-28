@@ -215,7 +215,7 @@ struct MidiController
         // the midi controller can be used as a keyboard
         void loadUserKeyboard (bool velocitySensKeys = true, int octRange = 4);
         // set the number of keys in an octave
-        int numKeysInOctave (int whiteKeys = 7, int blackKeys = 5);
+        int setNumKeysInOctave (int whiteKeys = 7, int blackKeys = 5);
         //set the velocity range for a particular key
         void setVelocityRangeForKeys(float pressureDown = 0.1f, std::string = "noteOn");   
     }; 
@@ -244,7 +244,7 @@ struct  EffectsPedal
     int outNum = 4;
 
     // load different effects type per module
-    void loadEfxonChain(bool chainAisActive = true, std::string = "slotA", int efxTypeSingle = 1);
+    void loadDiffEfxPerModule(bool chainAisActive = true, std::string = "slotA", int efxTypeSingle = 1);
     // process signal in-series or parallel 
     void processInSeriesOrParallel(std::string series, int mixSendAmmount = 100);
     // custom assigning effect parameters to UI
@@ -277,8 +277,8 @@ struct AISynth
         // pressure sensor strip
         float touchStrip = 0.9f;
 
-        // sound design using subtractive synthesis 
-        void soundDesignSSynth(std::string subtractive, int waveTone = 1);
+        // using subtractive synthesis for sound design 
+        void useSubSynthForSoundDesign(std::string subtractive, int waveTone = 1);
         // fine tuning all the oscillators
         float fineTuningAllOsc(double oscAll = 4.40, bool a4isPressed = true);
         // low pass filtering the signal
@@ -372,7 +372,7 @@ struct ControlPanel
     int switchPresetToCompare = 2; 
 
     // Save plug-in presets 
-    void savToUserFolder(std::string fileExtension = "Cpx", bool paramsAreSaved = true);
+    void saveToUserFolder(std::string fileExtension = "Cpx", bool paramsAreSaved = true);
     // Load plug-in presets 
     int loadFromUserFolder(std::string fileCategory = "Bassline", int presetValue = 10);
     // Switch effects types
