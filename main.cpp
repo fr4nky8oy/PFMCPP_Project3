@@ -252,9 +252,9 @@ void MidiController::changeMidiMode(std::string play, int channelOut, bool noteS
     }  
 }
 
-void MidiController::saveUserPreset(ControllerType Slide, int touchEncoders, bool automationWrite, std::string skinColor)
+void MidiController::saveUserPreset(ControllerType slide, int touchEncoders, bool automationWrite, std::string skinColor)
 {
-    Slide.model = "Push2";
+    slide.model = "Push2";
     if(automationWrite == true)
     {
         touchEncoders = 1;
@@ -413,7 +413,7 @@ struct ModDelay
     float feedBack = 0.9f;
     double filterFreq = 12.20; 
     int lfoRate = 1;
-    std::string ComboBox = "SaveUs";
+    std::string comboBox = "saveUs";
 
     float modulateDelayTime(int tapSignals = 2, float delTimeMs = 20.0f, std::string lfoShapeWave = "sine");
     int saveModDelayPreset(int paramToSave = 10, std::string labelMePlease = "TapeSpace");
@@ -432,7 +432,7 @@ float ModDelay::modulateDelayTime(int tapSignals, float delTimeMs, std::string l
 int ModDelay::saveModDelayPreset(int paramToSave, std::string labelMePlease)
 {
     int userPresetModDelNum = paramToSave;
-    ComboBox = labelMePlease + "My ModDelay";
+    comboBox = labelMePlease + "My ModDelay";
     
     return userPresetModDelNum;
 }
@@ -488,9 +488,9 @@ int WetDryControlWidget::saevCustomUISettins(int paramsToInclude, bool includeSl
 
 struct ControlPanel 
 {
-    std::string SavePreset = "Save New";
-    std::string LoadPreset = "Load Preset";
-    std::string EffectMode = "Multi Effect";
+    std::string savePreset = "Save New";
+    std::string loadPreset = "Load Preset";
+    std::string effectMode = "Multi Effect";
     std::string createUserType = "Mode A";
     int switchPresetToCompare = 1; 
 
@@ -504,7 +504,7 @@ void ControlPanel::saveToUserFolder(std::string fileExtension, bool paramsAreSav
 {
     if(paramsAreSaved == true)
     {
-        SavePreset = fileExtension + EffectMode + createUserType;
+        savePreset = fileExtension + effectMode + createUserType;
     }
     
 }
@@ -513,7 +513,7 @@ int ControlPanel::loadFromUserFolder(std::string fileCategory, int presetValue)
 {
     ++presetValue;
     int compareLastSaved =+ presetValue;
-    LoadPreset = fileCategory + EffectMode;
+    loadPreset = fileCategory + effectMode;
     
     return compareLastSaved;
 }
@@ -543,7 +543,7 @@ struct FeedbackControlWidget
 
 void FeedbackControlWidget::sendFeedbackinDistortion(float feedItBackIn, bool isExcedingLimit, std::string warningOn)
 {
-    feedItBackIn = ++feedItBackIn;
+    ++feedItBackIn;
     if(isExcedingLimit == true)
     {
         warningOn = "Clipping";   
@@ -570,9 +570,9 @@ struct FilterControlWidget
 {
     double highPassFilter = 67.00;
     double lowPassFilter = 40.20;
-    float Qrange = 1.0f;
+    float qRange = 1.0f;
     int shelveAvailable = 2;
-    std::string BritishMode = "NEVE";
+    std::string britishMode = "NEVE";
 
     float removeLowFreqContent(std::string filterType = "HighPass", bool secondOrderFilter = true, double rumbleRange = 10.90);
     int changeQBandwidth(int resonanceWidth = 4, bool fullyParametricMode = true);
@@ -584,7 +584,7 @@ float FilterControlWidget::removeLowFreqContent(std::string filterType, bool sec
     if(secondOrderFilter == true)
     {
         highPassFilter = rumbleRange;
-        BritishMode = filterType + "Cut";
+        britishMode = filterType + "Cut";
     }   
     return 50.0f;
 }
@@ -593,7 +593,7 @@ int FilterControlWidget::changeQBandwidth(int resonanceWidth, bool fullyParametr
 {
     if(fullyParametricMode == true)
     {
-        ++Qrange;
+        ++qRange;
         resonanceWidth = 1;
     }   
     return 1;
@@ -601,7 +601,7 @@ int FilterControlWidget::changeQBandwidth(int resonanceWidth, bool fullyParametr
 
 void FilterControlWidget::processViaVintageOrModern(std::string harmonicColoration, int componentType)
 {
-    BritishMode = harmonicColoration + "Custom74";
+    britishMode = harmonicColoration + "Custom74";
     shelveAvailable += componentType;
 }
 
